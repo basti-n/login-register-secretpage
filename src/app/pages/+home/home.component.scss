@@ -4,6 +4,12 @@
   grid-template-rows: auto auto 1fr;
 }
 
+.intro {
+  @media screen and (max-width: 600px) {
+    margin: 0 40px;
+  }
+}
+
 .usp-container {
   margin-bottom: 30px;
 }

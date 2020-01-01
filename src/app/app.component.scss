@@ -8,3 +8,16 @@
   padding: 10px 30px;
   overflow: scroll;
 }
+
+@media screen and (min-width: 600px) {
+  .main {
+    padding: 10px 20%;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .main {
+    padding: 0;
+    margin: 0 auto;
+  }
+}
