@@ -1,0 +1,26 @@
+button {
+  appearance: none;
+  background-color: transparent;
+  border: 2px solid var(--color-red);
+  border-radius: 0.6em;
+  color: var(--color-red);
+  cursor: pointer;
+  display: flex;
+  align-self: center;
+  margin: 20px auto;
+  padding: 15px 30px;
+  text-decoration: none;
+  text-align: center;
+  text-transform: uppercase;
+
+  transition: box-shadow 300ms ease-in-out, color 300ms ease-in-out;
+  &:hover {
+    box-shadow: 0 0 40px 40px var(--color-red) inset;
+  }
+
+  &:hover,
+  &:focus {
+    color: var(--color-white);
+    outline: 0;
+  }
+}

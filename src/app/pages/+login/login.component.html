@@ -1,0 +1,14 @@
+<div *ngIf="!(isLoggedIn$ | async); else loggedIn">
+  <p class="info-text" *ngIf="(isRedirectFromSecret$ | async) && !!showInfoBar">
+    <img class="info-icon" src="../assets/info.svg" />
+    <span>
+      Please login before you access the secret page
+    </span>
+  </p>
+  <h2>Login</h2>
+  <app-login-form (goToRegister)="goToRegister()" (loginRequest)="login($event)"></app-login-form>
+</div>
+
+<ng-template #loggedIn>
+  <h2>You are already logged in. Way to go!</h2>
+</ng-template>

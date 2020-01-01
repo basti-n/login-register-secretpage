@@ -1,1 +1,37 @@
-/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css?family=Reenie+Beanie&display=swap');
+
+:root {
+  --primary-color: #2d545e;
+  --secondary-color: #e1b382;
+  --primary-color-shadow: #12343b;
+  --secondary-color-shadow: #c89666;
+  --disabled-color: #D3D3D3;
+  --color-white: #fff;
+  --color-red: #e74c3c;
+  --light-font: white;
+  --dark-font: black;
+  --special-font: 'Reenie Beanie', cursive;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Cinzel', serif;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
+// Shared styles
+
+.shadow {
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.12), 0 2px 2px rgba(0, 0, 0, 0.12),
+    0 4px 4px rgba(0, 0, 0, 0.12), 0 8px 8px rgba(0, 0, 0, 0.12),
+    0 16px 16px rgba(0, 0, 0, 0.12);
+}
+
+.hidden {
+  display: none;
+}

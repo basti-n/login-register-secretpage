@@ -1,0 +1,127 @@
+:root {
+  --formFieldMargin: 0.875rem;
+  --loginBorderRadius: 0.25rem;
+}
+
+.wrapper {
+  display: flex;
+  flex-flow: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  flex-flow: column;
+  margin: 0 auto;
+  width: max-content;
+}
+
+input,
+button {
+  background-image: none;
+  border: 0;
+  color: inherit;
+  font: inherit;
+  margin: 0;
+  outline: 0;
+  padding: 0;
+  transition: background-color 0.3s;
+}
+
+.login-fields {
+  color: var(--dark-font);
+  margin: calc(var(--formFieldMargin) * -1);
+}
+
+button[type='submit'] {
+  cursor: pointer;
+  background-color: var(--primary-color);
+  color: var(--light-font);
+  font-weight: 700;
+  text-transform: uppercase;
+  transition: all 0.5s ease-in;
+  &:active,
+  &:hover {
+    background-color: var(--primary-color-shadow);
+  }
+  &:disabled {
+    color: var(--disabled-color);
+  }
+}
+
+.form input[type='password'],
+.form input[type='text'],
+.form button[type='submit'] {
+  width: 100%;
+}
+
+input[type='password'],
+input[type='text'],
+button[type='submit'] {
+  flex: 1;
+}
+
+.login-field {
+  display: flex;
+  margin: var(--formFieldMargin);
+  position: relative;
+}
+
+.login-field label,
+.login-field input[type='text'],
+.login-field input[type='password'],
+.login-field button[type='submit'] {
+  border-radius: var(--loginBorderRadus);
+  padding: 1.25rem;
+}
+
+.login-field label {
+  background-color: var(--secondary-color-shadow);
+  border-bottom-right-radius: 0;
+  border-top-right-radius: 0;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+  width: 100px;
+  font-size: 0.8rem;
+  text-align: center;
+}
+
+.icon {
+  height: auto;
+  width: 40%;
+}
+
+.login-field input[type='password'],
+.login-field input[type='text'] {
+  background-color: var(--secondary-color);
+  border-bottom-left-radius: 0;
+  border-top-left-radius: 0;
+  &::placeholder {
+    color: var(--dark-font);
+    opacity: 0.4;
+  }
+}
+
+.login-field input[type='password']:focus,
+.login-field input[type='password']:hover,
+.login-field input[type='text']:focus,
+.login-field input[type='text']:hover {
+  background-color: var(--secondary-color-shadow);
+}
+
+.error-message {
+  color: var(--color-red);
+  position: absolute;
+  display: flex;
+  right: 0;
+  bottom: 0;
+  font-size: 0.7rem;
+  text-align: center;
+  padding: 5px;
+}
+
+.error-text {
+  color: var(--color-red);
+}

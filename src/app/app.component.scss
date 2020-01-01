@@ -1,0 +1,10 @@
+.layout {
+  display: grid;
+  height: 100%;
+  grid-template-rows: min-content min-content 1fr 20px;
+}
+
+.main {
+  padding: 10px 30px;
+  overflow: scroll;
+}

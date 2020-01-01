@@ -1,0 +1,32 @@
+<div class="container">
+  <section>
+    <h2>Hi I'm <span class="name">Sebastian</span></h2>
+    <p>
+      Join myself and the community discussing products, product development,
+      and of course... how to build them.
+    </p>
+  </section>
+
+  <section class="usps">
+    <ul class="usp-container">
+      <app-list-checkbox
+        *ngFor="let usp of usps"
+        [text]="usp"
+      ></app-list-checkbox>
+    </ul>
+  </section>
+
+  <section class="content">
+    <app-login-form
+      *ngIf="!(isLoggedIn$ | async); else loggedIn"
+      (loginRequest)="login($event)"
+      (goToRegister)="goToRegister()"
+    ></app-login-form>
+    <ng-template #loggedIn>
+      <app-secret-button
+        (secretBtnClick)="handleSecretBtnClick()"
+      ></app-secret-button>
+      <app-logout-button (logout)="handleLogout()"></app-logout-button>
+    </ng-template>
+  </section>
+</div>

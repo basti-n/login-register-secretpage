@@ -1,0 +1,49 @@
+<div class="wrapper">
+<section class="container">
+    <form [formGroup]="loginForm" class="login-fields">
+      <div class="login-field">
+        <label for="username">
+          <img class="icon" src="assets/user.svg" />
+          <span class="hidden">username</span>
+        </label>
+        <input
+          formControlName="username"
+          type="text"
+          id="username"
+          autocomplete="username"
+          placeholder="username"
+        />
+      </div>
+
+      <div class="login-field">
+        <label for="password">
+          <img class="icon" src="assets/password.svg" />
+          <span class="hidden">password</span>
+        </label>
+        <input
+          formControlName="password"
+          type="password"
+          id="password"
+          autocomplete="current-password"
+          placeholder="password"
+        />
+      </div>
+
+      <div class="login-field">
+        <button
+          type="submit"
+          [disabled]="!loginForm.valid"
+          (click)="login(); $event.preventDefault()"
+        >
+          Login
+        </button>
+      </div>
+    </form>
+</section>
+
+<section class="register">
+  <p class="register-text">
+    Not a member? <a (click)="register()">Sign up now</a>
+  </p>
+</section>
+</div>

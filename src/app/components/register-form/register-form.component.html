@@ -1,0 +1,92 @@
+<div class="wrapper">
+  <div class="container">
+    <form [formGroup]="registerForm">
+      <div class="login-field">
+        <label for="username">
+          <img class="icon" src="assets/user.svg" />
+          <span class="hidden">username</span>
+        </label>
+        <input
+          formControlName="username"
+          type="text"
+          id="username"
+          autocomplete="username"
+          placeholder="username"
+          [ngClass]="{
+            'error-text':
+              registerForm.get('username').dirty &&
+              !!registerForm.get('username').errors &&
+              registerForm.get('username').errors.usernameTaken
+          }"
+        />
+        <span
+          appInputError
+          *appShowInputError="
+            registerForm.get('username').value;
+            formData: [registerForm.get('username'), 'usernameTaken']
+          "
+          [formElement]="registerForm.get('username')"
+          errorString="usernameTaken"
+          class="error-message"
+        ></span>
+      </div>
+
+      <div class="login-field">
+        <label for="password">
+          <img class="icon" src="assets/password.svg" />
+          <span class="hidden">password</span>
+        </label>
+        <input
+          formControlName="password"
+          type="password"
+          id="password"
+          autocomplete="current-password"
+          placeholder="password"
+        />
+      </div>
+
+      <div class="login-field">
+        <label for="password-confirm">
+          <img class="icon" src="assets/password.svg" />
+          <span class="hidden">confirm password</span>
+        </label>
+        <input
+          formControlName="passwordConfirm"
+          type="password"
+          id="password-confirm"
+          placeholder="confirm password"
+          autocomplete="off"
+          autofill="off"
+          [ngClass]="{
+            'error-text':
+              registerForm.get('passwordConfirm').dirty &&
+              registerForm.get('password').dirty &&
+              !!registerForm.errors &&
+              !!registerForm.errors.passwordMatchError
+          }"
+        />
+        <span
+          appInputError
+          *appShowInputError="
+            registerForm.get('passwordConfirm').value;
+            formData: [registerForm, 'passwordMatchError']
+          "
+          [formElement]="registerForm"
+          errorString="passwordMatchError"
+          class="error-message"
+        ></span>
+      </div>
+
+      <div class="login-field">
+        <button
+          type="submit"
+          [disabled]="!registerForm.valid"
+          (click)="register(); $event.preventDefault()"
+        >
+          Register
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+
