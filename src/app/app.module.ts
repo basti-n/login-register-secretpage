@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, APP_INITIALIZER } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { LoadingOrErrorModule } from './components/loading-or-error';
 import { LoginFormModule } from './components/login-form';
@@ -17,6 +17,11 @@ import { SecretComponent } from './pages/+secret/secret.component';
 import { LoginComponent } from './pages/+login/login.component';
 import { RegisterComponent } from './pages/+register/register.component';
 import { RegisterFormModule } from './components/register-form';
+import { AppConfigService } from './app-config.service';
+
+export function initConfigFactory(configService: AppConfigService) {
+  return () => configService.loadConfig();
+}
 
 @NgModule({
   declarations: [
@@ -40,6 +45,12 @@ import { RegisterFormModule } from './components/register-form';
     RegisterFormModule,
   ],
   providers: [
+    {
+      provide: APP_INITIALIZER,
+      useFactory: initConfigFactory,
+      deps: [AppConfigService],
+      multi: true
+    },
     { provide: HTTP_INTERCEPTORS, useClass: HttpErrorInterceptor, multi: true },
   ],
   bootstrap: [AppComponent],

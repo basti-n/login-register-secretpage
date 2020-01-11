@@ -3,18 +3,22 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Joke } from '../models';
-import { JokeConfig } from '../configurations/joke-config';
+import { AppConfigService } from '../app-config.service';
+import { JokeConfig } from '../configurations';
 
 @Injectable({ providedIn: 'root' })
 export class JokeService {
-  url = 'https://geek-jokes.sameerkumar.website/api';
+  url: string;
 
   constructor(
     private http: HttpClient,
+    private configService: AppConfigService,
     @Optional() private jokeConfig: JokeConfig
   ) {
     if (!!jokeConfig) {
       this.url = this.jokeConfig.baseUrl;
+    } else {
+      this.url = this.configService.getConfig().jokeUrl;
     }
   }
 
