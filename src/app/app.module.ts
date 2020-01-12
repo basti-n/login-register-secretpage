@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule, APP_INITIALIZER } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { LoadingOrErrorModule } from './components/loading-or-error';
 import { LoginFormModule } from './components/login-form';
@@ -17,10 +17,12 @@ import { SecretComponent } from './pages/+secret/secret.component';
 import { LoginComponent } from './pages/+login/login.component';
 import { RegisterComponent } from './pages/+register/register.component';
 import { RegisterFormModule } from './components/register-form';
-import { AppConfigService } from './app-config.service';
+import { JokeConfig } from './configurations';
+import { environment } from 'src/environments/environment';
 
-export function initConfigFactory(configService: AppConfigService) {
-  return () => configService.loadConfig();
+export function jokeConfigFn() {
+  console.log('jokeConfigFn', environment.jokeUrl);
+  return new JokeConfig(environment.jokeUrl);
 }
 
 @NgModule({
@@ -46,10 +48,8 @@ export function initConfigFactory(configService: AppConfigService) {
   ],
   providers: [
     {
-      provide: APP_INITIALIZER,
-      useFactory: initConfigFactory,
-      deps: [AppConfigService],
-      multi: true
+      provide: JokeConfig,
+      useFactory: jokeConfigFn,
     },
     { provide: HTTP_INTERCEPTORS, useClass: HttpErrorInterceptor, multi: true },
   ],

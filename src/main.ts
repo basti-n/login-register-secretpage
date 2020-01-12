@@ -3,10 +3,22 @@ import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
 import { AppModule } from './app/app.module';
 import { environment } from './environments/environment';
+import { Config } from './app/models';
 
-if (environment.production) {
-  enableProdMode();
-}
+(async () => {
+  const response = await fetch('/assets/config/config.json');
+  const config: Config = await response.json();
 
-platformBrowserDynamic().bootstrapModule(AppModule)
-  .catch(err => console.error(err));
+  if (!environment.production) {
+    environment.jokeUrl = config.jokeUrlDev;
+  }
+
+  if (environment.production) {
+    environment.jokeUrl = config.jokeUrl;
+    enableProdMode();
+  }
+
+  platformBrowserDynamic()
+    .bootstrapModule(AppModule)
+    .catch(err => console.error(err));
+})();
