@@ -10,6 +10,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HttpErrorInterceptor } from './interceptors/http-error.interceptor';
 import { SecretButtonModule } from './components/secret-button/secret-button.component';
 import { LogoutButtonModule } from './components/logout-button/logout-button.module';
+import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './pages/+home/home.component';
@@ -19,6 +20,8 @@ import { RegisterComponent } from './pages/+register/register.component';
 import { RegisterFormModule } from './components/register-form';
 import { JokeConfig } from './configurations';
 import { environment } from 'src/environments/environment';
+import { NgxsModule } from '@ngxs/store';
+import { JokeState } from './state/joke.state';
 
 export function jokeConfigFn() {
   console.log('jokeConfigFn', environment.jokeUrl);
@@ -45,6 +48,8 @@ export function jokeConfigFn() {
     SecretButtonModule,
     LogoutButtonModule,
     RegisterFormModule,
+    NgxsModule.forRoot([JokeState]),
+    NgxsReduxDevtoolsPluginModule.forRoot(),
   ],
   providers: [
     {

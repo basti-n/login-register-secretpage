@@ -1,4 +1,4 @@
 {
   "jokeUrl": "https://joke-express-backend.herokuapp.com/api/jokes",
-  "jokeUrlDev": "https://localhost:8080/api/jokes"
+  "jokeUrlDev": "http://localhost:8080/api/jokes"
 }
